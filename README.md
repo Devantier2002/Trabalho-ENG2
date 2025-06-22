@@ -2,14 +2,14 @@
 
 ## 💡 O que é?
 
-O Singleton é um padrão de projeto **criacional** que assegura que **uma classe tenha apenas uma instância**, além de oferecer um **ponto de acesso global** a essa instância :contentReference[oaicite:1]{index=1}.
+O Singleton é um padrão de projeto **criacional** que assegura que **uma classe tenha apenas uma instância**, além de oferecer um **ponto de acesso global** a essa instância.
 
 ---
 
 ## 🎯 Problema que resolve
 
-1. **Garantir instância única** — necessário quando mais de uma instância causaria inconsistência ou uso excessivo de recursos (ex: conexão de banco ou arquivo) :contentReference[oaicite:2]{index=2}.  
-2. **Ponto global de acesso** — substitui variáveis globais inseguras, protegendo a instância contra sobrescrita :contentReference[oaicite:3]{index=3}.
+1. **Garantir instância única** — necessário quando mais de uma instância causaria inconsistência ou uso excessivo de recursos (ex: conexão de banco ou arquivo).  
+2. **Ponto global de acesso** — substitui variáveis globais inseguras, protegendo a instância contra sobrescrita.
 
 ---
 
@@ -17,7 +17,7 @@ O Singleton é um padrão de projeto **criacional** que assegura que **uma class
 
 1. **Construtor privado**
 2. **Campo estático** para armazenar a instância
-3. **Método estático** `getInstance()` que instancia de forma *lazy* e retorna a mesma instância :contentReference[oaicite:4]{index=4}
+3. **Método estático** `getInstance()` que instancia de forma *lazy* e retorna a mesma instância 
 
 ```java
 public class Configuracao {
@@ -38,7 +38,7 @@ public class Configuracao {
 
 | ✅ Pontos Fortes                         | ⚠️ Pontos Fracos                                                                               |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| Garante uma única instância             | Viola o princípio da **responsabilidade única** ([refactoring.guru][1], [pt.wikipedia.org][2]) |
+| Garante uma única instância             | Viola o princípio da **responsabilidade única** 
 | Fornece ponto de acesso global          | Pode ocultar baixo acoplamento e dificultar testes                                             |
 | Inicialização *lazy* economiza recursos | Exige atenção em ambiente multithread                                                          |
 
