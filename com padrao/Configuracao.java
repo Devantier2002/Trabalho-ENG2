@@ -1,15 +1,19 @@
-// Configuracao.java
-public class Configuracao {
-    private static Configuracao instancia;
+public class Database {
+    private static Database instance;
 
-    private Configuracao() {
-        System.out.println("Configuração criada.");
+    private Database() {
+        System.out.println("Conexão com banco criada.");
     }
 
-    public static Configuracao getInstance() {
-        if (instancia == null) {
-            instancia = new Configuracao();
+    public static synchronized Database getInstance() {
+        if (instance == null) {
+            instance = new Database();
         }
-        return instancia;
+        return instance;
+    }
+
+    public void query(String sql) {
+        System.out.println("Executando: " + sql);
     }
 }
+

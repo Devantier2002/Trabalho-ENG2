@@ -1,13 +1,11 @@
-public class ContaConfiguracaoSemSingleton {
+public class Application {
     public static void main(String[] args) {
-        Configuracao c1 = new Configuracao();
-        Configuracao c2 = new Configuracao();
-        System.out.println(c1 == c2); // false
-    }
-}
+        Database db1 = new Database(); // cria nova instância
+        db1.query("SELECT * FROM clientes");
 
-class Configuracao {
-    public Configuracao() {
-        System.out.println("Nova configuração criada.");
+        Database db2 = new Database(); // cria outra nova instância
+        db2.query("SELECT * FROM pedidos");
+
+        System.out.println(db1 == db2); // false ❌
     }
 }
