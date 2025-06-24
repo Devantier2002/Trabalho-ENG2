@@ -1,47 +1,30 @@
-# 🔒 Singleton
+🔒 Singleton
+🎯 Propósito
+O Singleton é um padrão de projeto criacional que permite garantir que uma classe tenha apenas uma instância, enquanto fornece um ponto de acesso global para essa instância.
 
-## 🎯 Propósito
-
-O **Singleton** é um padrão de projeto criacional que permite garantir que uma classe tenha **apenas uma instância**, enquanto fornece um **ponto de acesso global** para essa instância.
-
----
-
-## ❗ Problema
-
+❗ Problema
 O padrão Singleton resolve dois problemas principais:
 
-1. **Garantir instância única**  
-   Útil para controlar o acesso a recursos compartilhados, como conexões com banco de dados, arquivos, serviços ou configurações globais.
+Garantir instância única
+Útil para controlar o acesso a recursos compartilhados, como conexões com banco de dados, arquivos, serviços ou configurações globais.
 
-2. **Acesso global controlado**  
-   Substitui o uso de variáveis globais inseguras, oferecendo um método seguro e centralizado para acessar a instância.
+Acesso global controlado
+Substitui o uso de variáveis globais inseguras, oferecendo um método seguro e centralizado para acessar a instância.
 
-> ⚠️ Porém, ele **viola o Princípio da Responsabilidade Única** ao combinar controle de instância com acesso global.
+⚠️ Porém, ele viola o Princípio da Responsabilidade Única ao combinar controle de instância com acesso global.
 
----
-
-## 🛠️ Solução
-
+🛠️ Solução
 Todas as implementações Singleton seguem estes passos:
 
-- O **construtor da classe é privado**, impedindo o uso de `new` fora da própria classe.
-- Um **método estático** `getInstance()` controla o acesso e cria a instância apenas quando necessário (*lazy initialization*).
-- Em ambientes multithread, o acesso à instância deve ser sincronizado para evitar duplicações.
+O construtor da classe é privado, impedindo o uso de new fora da própria classe.
+Um método estático getInstance() controla o acesso e cria a instância apenas quando necessário (lazy initialization).
+Em ambientes multithread, o acesso à instância deve ser sincronizado para evitar duplicações.
+🧠 Analogia com o mundo real
+Pense em um governo: um país só pode ter um governo legítimo ao mesmo tempo.
+Ainda que seus membros mudem, existe apenas um ponto de acesso oficial — o próprio governo.
 
----
-
-## 🧠 Analogia com o mundo real
-
-> Pense em um **governo**: um país só pode ter um governo legítimo ao mesmo tempo.  
-> Ainda que seus membros mudem, existe apenas **um ponto de acesso oficial** — o próprio governo.
-
----
-
-# 💻 Implementação (Java)
-
-### ✔️ Com Singleton — Conexão com Banco de Dados
-
-```java
+💻 Implementação (Java)
+✔️ Com Singleton — Conexão com Banco de Dados
 public class Database {
     private static Database instance;
 
@@ -72,10 +55,8 @@ public class Main {
         System.out.println(db1 == db2); // true
     }
 }
-```
-## ❌ Solução sem Singleton
-### Problema: múltiplas instâncias e desperdício de recursos
-```java
+❌ Solução sem Singleton
+Problema: múltiplas instâncias e desperdício de recursos
 public class Database {
     public Database() {
         System.out.println("Nova instância de Database criada.");
@@ -93,28 +74,23 @@ public class Main {
         System.out.println(db1 == db2); // false ❌
     }
 }
-```
-### ⚠️ Isso pode causar inconsistência, desperdício de memória e múltiplas conexões desnecessárias.
+⚠️ Isso pode causar inconsistência, desperdício de memória e múltiplas conexões desnecessárias.
+✅ Aplicabilidade
+Use o padrão Singleton quando:
+Uma única instância deve ser compartilhada entre diversos módulos.
 
-# ✅ Aplicabilidade
+Deseja-se evitar variáveis globais inseguras.
 
-## Use o padrão Singleton quando:
+O controle de acesso e uso de recursos compartilhados é crítico (ex: logs, banco de dados, configuração).
 
-- Uma única instância deve ser compartilhada entre diversos módulos.
-
-- Deseja-se evitar variáveis globais inseguras.
-
-- O controle de acesso e uso de recursos compartilhados é crítico (ex: logs, banco de dados, configuração).
-
-# 📈 Prós e Contras
-## ✅ Vantagens	
-- Garante uma instância única	
-- Acesso global e controlado	
-- Inicialização tardia (lazy) otimiza memória	
-- Protege contra sobrescritas e múltiplos new	
-
-## ⚠️ Desvantagens
-- Viola o Princípio da Responsabilidade Única
-- Pode mascarar um design acoplado demais
-- Difícil de testar e simular (testes unitários complexos)
-- Exige tratamento especial em ambientes multithread
+📈 Prós e Contras
+✅ Vantagens
+Garante uma instância única
+Acesso global e controlado
+Inicialização tardia (lazy) otimiza memória
+Protege contra sobrescritas e múltiplos new
+⚠️ Desvantagens
+Viola o Princípio da Responsabilidade Única
+Pode mascarar um design acoplado demais
+Difícil de testar e simular (testes unitários complexos)
+Exige tratamento especial em ambientes multithread
